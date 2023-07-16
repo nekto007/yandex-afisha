@@ -4,12 +4,12 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import RedirectView
 
-from where_to_go import views
+from place import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.start_page),
-    path('place/', include('place.urls')),
+    path('places/<int:place_id>/', views.place_detail, name='place_detail'),
     path('', RedirectView.as_view(url='/place/', permanent=True)),
 ]
 
