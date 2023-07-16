@@ -27,7 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'place.apps.PlaceConfig'
+    'place.apps.PlaceConfig',
+    'adminsortable2',
 ]
 
 MIDDLEWARE = [
