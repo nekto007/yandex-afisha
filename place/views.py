@@ -27,11 +27,9 @@ def start_page(request):
         'type': 'FeatureCollection',
         'features': features
     }
-    print(geo_places)
     context = {
         'geo_places': geo_places
     }
-    print(context)
     return render(request, 'index.html', context)
 
 

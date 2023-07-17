@@ -1,22 +1,23 @@
 import os
-
 from pathlib import Path
 
+from environs import Env
+
+env = Env()
+env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-og3-dph7&lg@*zs^jpui0zcleg+h39bv2p*-4doaj$f4e*z@t*'
+SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG', False)
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', ['127.0.0.1'])
 
 # Application definition
 
@@ -63,7 +64,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'where_to_go.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -73,7 +73,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -93,7 +92,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -107,18 +105,23 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media/'
+# STATIC_URL = '/static/'
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = BASE_DIR / 'media/'
+#
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+#     'static/',
+# ]
+STATIC_URL = env.str('STATIC_URL', '/static/')
+STATIC_ROOT = os.path.join(BASE_DIR, env.str('STATIC_ROOT', 'static'))
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'assets'), ]
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    'static/',
-]
+MEDIA_URL = env.str('MEDIA_URL', '/media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, env.str('MEDIA_ROOT', 'media'))
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
