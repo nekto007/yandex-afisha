@@ -5,11 +5,11 @@ The project allows you to create "your" interactive map of locations (events).
 
 ## Where to see and try
 
-Demo version of the site is located [here](http://nekto007.pythonanywhere.com/).
+Demo version of the site is located [here](http://142.93.229.60/).
 
 Ability to add or tweak a location, add images,  
 description or title, swap images you can in  
-[admin mode here](http://nekto007.pythonanywhere.com/admin/places/place)  
+[admin mode here](http://142.93.229.60/admin/places/place)  
 (test login and password on request).
 
 
@@ -26,7 +26,7 @@ pip install -r requirements.txt
 The following environment variables will be needed to run the site:
 ```bash
 SECRET_KEY=YOUR_SECRET_KEY
-ALLOWED_HOSTS=127.0.0.0.1, *.pythonanywhere.com
+ALLOWED_HOSTS=127.0.0.0.1
 ```
 The variables below are set by default, set your own if necessary
 ```bash
